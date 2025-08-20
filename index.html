@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- MODIFICAR: Título de la pestaña del navegador -->
+    <title>Corazón de Corazones</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+    <!-- NOTA: Este título se modifica desde el archivo script.js -->
+    <h1>10 cosas que me encantan de ti</h1>
+    <!-- NOTA: Estas instrucciones se modifican desde el archivo script.js -->
+    <p class="instructions">Haz clic en los corazones para descubrir los mensajes.</p>
+
+    <div class="controls-container">
+        <div id="counter-container">
+            <span id="counter">0 / 10</span> ❤️
+        </div>
+        <!-- MODIFICAR: Texto del botón de pista -->
+        <button id="hint-button" class="hint-button">
+    Pista ✨
+  </button>
+        <!-- MODIFICAR: Texto del botón de reinicio -->
+        <button id="reset-button" class="hint-button" style=" display: none; background-color: #c0392b;">
+    Reiniciar
+  </button>
+    </div>
+
+    <div id="heart-container">
+        <svg id="heart-svg" viewBox="0 0 500 450">
+    <path id="heart-path" d="M433.8,63.2c-26.6-26.6-62.5-41.3-100.5-41.3s-73.9,14.7-100.5,41.3L225,71.1L217.2,63.2
+              c-26.6-26.6-62.5-41.3-100.5-41.3S42.8,36.6,16.2,63.2C-10.4,89.8-10.4,133.4,16.2,160l186,186c2.6,2.6,6,4,9.5,4.4
+              c0.3,0,0.5,0,0.8,0s0.5,0,0.8,0c3.5-0.3,6.9-1.8,9.5-4.4l186-186C460.4,133.4,460.4,89.8,433.8,63.2z"/>
+  </svg>
+    </div>
+
+    <div id="final-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <!-- NOTA: El contenido de este modal se modifica desde script.js -->
+            <h2></h2>
+            <p></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

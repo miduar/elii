@@ -1,0 +1,316 @@
+/* MODIFICAR: Estilos globales como la fuente y el color de fondo */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #80a6df;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+#counter-container.updated {
+    transform: scale(1.15);
+    transition: transform 0.2s ease-out;
+}
+
+
+/* MODIFICAR: Color del título principal */
+
+h1 {
+    color: #c0392b;
+    margin-bottom: 8px;
+    font-size: 2.2rem;
+}
+
+.instructions {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.controls-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* MODIFICAR: Estilos del contador (color de texto, fondo) */
+
+#counter-container {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+    background-color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* MODIFICAR: Estilos del botón de pista (color de fondo, color de texto) */
+
+.hint-button {
+    background-color: #ffc107;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.hint-button:hover {
+    background-color: #ffb300;
+    transform: translateY(-2px);
+}
+
+.hint-button:active {
+    transform: translateY(0);
+}
+
+#heart-container {
+    position: relative;
+    width: 90vw;
+    max-width: 500px;
+    aspect-ratio: 500 / 450;
+    margin: 0 auto;
+}
+
+#heart-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.small-heart {
+    position: absolute;
+    background-color: var(--heart-color);
+    transform-origin: center center;
+    animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+    transition: transform 0.2s ease-out, filter 0.2s ease-out;
+}
+
+.small-heart::before,
+.small-heart::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--heart-color);
+    border-radius: 50%;
+}
+
+.small-heart::before {
+    top: -50%;
+    left: 0;
+}
+
+.small-heart::after {
+    top: 0;
+    left: 50%;
+}
+
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        transform: scale(0.2) rotate(var(--initial-rotation, 0deg));
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(var(--final-rotation, 0deg));
+    }
+}
+
+.small-heart:hover {
+    transform: scale(1.3) rotate(-30deg) !important;
+    z-index: 10;
+}
+
+.special-heart {
+    cursor: pointer;
+}
+
+.heart-beat {
+    animation: heart-beat-animation 1.5s ease-in-out infinite;
+}
+
+@keyframes heart-beat-animation {
+    0%,
+    100% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+.special-heart.discovered {
+    filter: grayscale(40%) drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.special-heart.is-active {
+    animation: shine-effect 1.5s ease-in-out;
+    z-index: 20;
+    filter: none !important;
+}
+
+@keyframes shine-effect {
+    0%,
+    100% {
+        filter: drop-shadow(0 0 4px white) drop-shadow(0 0 8px var(--heart-color));
+        transform: scale(1.1) rotate(-45deg);
+    }
+    50% {
+        filter: drop-shadow(0 0 8px white) drop-shadow(0 0 16px var(--heart-color));
+        transform: scale(1.3) rotate(-45deg);
+    }
+}
+
+.phrase-popup {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 30;
+    transform: translate(-50%, -100%);
+    text-shadow: 0 0 5px #fff, 0 0 10px #ffdd59;
+    animation: fade-in-out 3s ease-in-out forwards;
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -80%) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -150%) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -160%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -200%) scale(0.8);
+    }
+}
+
+
+/* MODIFICAR: Estilos del modal final (fondo, etc.) */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    background-color: rgb(216, 137, 137);
+    padding: 30px 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transform: scale(0.8);
+    animation: zoomIn 0.3s 0.1s ease-in-out forwards;
+    width: 90%;
+    max-width: 450px;
+}
+
+.modal-content h2 {
+    color: #c0392b;
+    margin-top: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .instructions {
+        font-size: 1rem;
+    }
+    .controls-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    #counter-container {
+        font-size: 1.3rem;
+    }
+    #heart-container {
+        width: 95vw;
+    }
+}
