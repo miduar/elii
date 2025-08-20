@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
 
     // MODIFICAR: Todo el contenido de texto se personaliza aquí.
     const config = {
-        titulo: "10 cosas que me encantan de ti",
+        titulo: "10 cosas que me encantan de ti Elii",
         instrucciones: "Haz clic en los corazones para descubrir los mensajes.",
         // MODIFICAR: Escribe aquí las 10 frases que quieres que aparezcan.
         frases: [
@@ -221,4 +221,5 @@ window.addEventListener('load', () => {
     });
 
     window.addEventListener('resize', debounce(initGame, 250));
+
 });
